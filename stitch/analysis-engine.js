@@ -333,8 +333,8 @@ const ATSEngine = (() => {
     try {
       const localResult = analyzeLocally(resumeText, jobDescription);
 
-      // We no longer call Google directly. We call our secure proxy server.
-      const response = await fetch('http://localhost:3000/api/analyze', {
+      // Use Cloudflare Worker backend instead of local server.
+      const response = await fetch('https://career-curator-backend.siddhantgiri0726.workers.dev/api/analyze', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ resumeText, jobDescription })
