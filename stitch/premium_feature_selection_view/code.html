@@ -1,0 +1,217 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Premium Feature Menu - Career Curator</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;600;700;800&amp;family=Inter:wght@400;500;600&amp;family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .glass-panel {
+            background: rgba(255, 255, 255, 0.7);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+        }
+    </style>
+<script id="tailwind-config">
+        tailwind.config = {
+          darkMode: "class",
+          theme: {
+            extend: {
+              "colors": {
+                      "outline-variant": "#c3c6d7",
+                      "inverse-on-surface": "#eff1f3",
+                      "on-secondary-fixed-variant": "#005236",
+                      "background": "#f7f9fb",
+                      "on-error-container": "#93000a",
+                      "tertiary-container": "#996100",
+                      "on-tertiary-fixed-variant": "#653e00",
+                      "on-surface": "#191c1e",
+                      "on-primary-fixed": "#00174b",
+                      "primary-container": "#2563eb",
+                      "surface-container-high": "#e6e8ea",
+                      "on-primary-fixed-variant": "#003ea8",
+                      "surface-container-lowest": "#ffffff",
+                      "surface-container-highest": "#e0e3e5",
+                      "on-tertiary-fixed": "#2a1700",
+                      "outline": "#737686",
+                      "secondary-fixed-dim": "#4edea3",
+                      "error": "#ba1a1a",
+                      "tertiary": "#784b00",
+                      "surface-dim": "#d8dadc",
+                      "surface-container": "#eceef0",
+                      "tertiary-fixed-dim": "#ffb95f",
+                      "primary": "#004ac6",
+                      "on-secondary-container": "#00714d",
+                      "inverse-primary": "#b4c5ff",
+                      "on-primary": "#ffffff",
+                      "on-tertiary": "#ffffff",
+                      "on-secondary": "#ffffff",
+                      "on-tertiary-container": "#ffeedd",
+                      "surface-container-low": "#f2f4f6",
+                      "on-error": "#ffffff",
+                      "secondary": "#006c49",
+                      "on-primary-container": "#eeefff",
+                      "surface-tint": "#0053db",
+                      "primary-fixed": "#dbe1ff",
+                      "inverse-surface": "#2d3133",
+                      "error-container": "#ffdad6",
+                      "secondary-fixed": "#6ffbbe",
+                      "surface": "#f7f9fb",
+                      "on-surface-variant": "#434655",
+                      "surface-bright": "#f7f9fb",
+                      "secondary-container": "#6cf8bb",
+                      "tertiary-fixed": "#ffddb8",
+                      "on-background": "#191c1e",
+                      "on-secondary-fixed": "#002113",
+                      "surface-variant": "#e0e3e5",
+                      "primary-fixed-dim": "#b4c5ff"
+              },
+              "borderRadius": {
+                      "DEFAULT": "0.25rem",
+                      "lg": "0.5rem",
+                      "xl": "1.5rem",
+                      "full": "9999px"
+              },
+              "fontFamily": {
+                      "headline": ["Manrope"],
+                      "body": ["Inter"],
+                      "label": ["Inter"]
+              }
+            },
+          },
+        }
+    </script>
+</head>
+<body class="bg-background font-body text-on-surface antialiased flex flex-col min-h-screen">
+<!-- TopNavBar -->
+<nav class="fixed top-0 w-full z-50 bg-slate-50/80 dark:bg-slate-900/80 backdrop-blur-md border-b border-slate-200/15 dark:border-slate-800/15 shadow-sm dark:shadow-none flex justify-between items-center px-8 h-16 max-w-full">
+<div class="flex items-center gap-2">
+<span class="text-xl font-extrabold tracking-tight text-blue-800 dark:text-blue-300 font-headline">Career Curator</span>
+</div>
+<div class="hidden md:flex items-center gap-8">
+<a class="text-slate-600 dark:text-slate-400 hover:text-blue-600 dark:hover:text-blue-300 transition-colors font-inter text-sm" href="#">Check Score</a>
+<a class="text-slate-600 dark:text-slate-400 hover:text-blue-600 dark:hover:text-blue-300 transition-colors font-inter text-sm" href="#">About</a>
+</div>
+<button class="bg-primary text-on-primary px-6 py-2 rounded-xl font-bold tracking-tight text-sm hover:opacity-90 transition-transform active:scale-95 duration-200">Login</button>
+</nav>
+<!-- Main Content Canvas -->
+<main class="flex-grow pt-24 pb-16 px-6 relative overflow-hidden">
+<!-- Aesthetic Background Elements -->
+<div class="absolute top-0 left-0 w-full h-full pointer-events-none overflow-hidden -z-10">
+<div class="absolute -top-[10%] -left-[10%] w-[40%] h-[40%] bg-primary/5 rounded-full blur-[120px]"></div>
+<div class="absolute top-[20%] -right-[5%] w-[30%] h-[50%] bg-secondary/5 rounded-full blur-[100px]"></div>
+</div>
+<div class="max-w-6xl mx-auto">
+<!-- Header Section -->
+<div class="text-center mb-12 space-y-4">
+<div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-secondary-container/30 text-on-secondary-container text-xs font-bold font-headline uppercase tracking-widest">
+<span class="material-symbols-outlined text-sm" style="font-variation-settings: 'FILL' 1;">bolt</span>
+                    Premium Feature Menu
+                </div>
+<h1 class="text-4xl md:text-5xl font-extrabold font-headline text-on-surface leading-tight tracking-tight">
+                    Choose Your <span class="text-primary">Upgrade</span>
+</h1>
+<p class="text-lg text-on-surface-variant max-w-2xl mx-auto">
+                    Unlock specific high-impact analysis features one at a time. Watch a quick video to gain permanent access to each tool for this session.
+                </p>
+</div>
+<!-- Cards Grid -->
+<div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+<!-- Deep Experience Analysis -->
+<div class="bg-surface-container-low border border-outline/10 p-8 rounded-2xl shadow-sm hover:shadow-md transition-all flex flex-col h-full group">
+<div class="flex items-center gap-4 mb-6">
+<div class="w-12 h-12 rounded-xl bg-primary/10 flex items-center justify-center text-primary">
+<span class="material-symbols-outlined text-3xl">work</span>
+</div>
+<h3 class="text-xl font-bold font-headline text-on-surface">Deep Experience Analysis</h3>
+</div>
+<p class="text-on-surface-variant mb-8 flex-grow">
+                        Get a granular review of your bullet points. We analyze each sentence for quantifiable impact, metrics, and professional tone.
+                    </p>
+<button class="w-full bg-surface-container-highest text-on-surface font-bold py-4 rounded-xl flex items-center justify-center gap-3 hover:bg-primary hover:text-on-primary transition-all group/btn active:scale-95">
+<span class="material-symbols-outlined text-xl group-hover/btn:animate-pulse">play_circle</span>
+                        Watch Ad to Unlock
+                    </button>
+</div>
+<!-- Action Verb Suggestions -->
+<div class="bg-surface-container-low border border-outline/10 p-8 rounded-2xl shadow-sm hover:shadow-md transition-all flex flex-col h-full group">
+<div class="flex items-center gap-4 mb-6">
+<div class="w-12 h-12 rounded-xl bg-secondary/10 flex items-center justify-center text-secondary">
+<span class="material-symbols-outlined text-3xl">speech_to_text</span>
+</div>
+<h3 class="text-xl font-bold font-headline text-on-surface">Action Verb Suggestions</h3>
+</div>
+<p class="text-on-surface-variant mb-8 flex-grow">
+                        Replace passive language with power-driven action verbs. Our AI suggests dynamic alternatives that command recruiter attention.
+                    </p>
+<button class="w-full bg-surface-container-highest text-on-surface font-bold py-4 rounded-xl flex items-center justify-center gap-3 hover:bg-secondary hover:text-on-secondary transition-all group/btn active:scale-95">
+<span class="material-symbols-outlined text-xl group-hover/btn:animate-pulse">play_circle</span>
+                        Watch Ad to Unlock
+                    </button>
+</div>
+<!-- Skill Section Optimization -->
+<div class="bg-surface-container-low border border-outline/10 p-8 rounded-2xl shadow-sm hover:shadow-md transition-all flex flex-col h-full group">
+<div class="flex items-center gap-4 mb-6">
+<div class="w-12 h-12 rounded-xl bg-primary/10 flex items-center justify-center text-primary">
+<span class="material-symbols-outlined text-3xl">tune</span>
+</div>
+<h3 class="text-xl font-bold font-headline text-on-surface">Skill Section Optimization</h3>
+</div>
+<p class="text-on-surface-variant mb-8 flex-grow">
+                        Automated matching with top job description keywords. We ensure your technical and soft skills align perfectly with industry standards.
+                    </p>
+<button class="w-full bg-surface-container-highest text-on-surface font-bold py-4 rounded-xl flex items-center justify-center gap-3 hover:bg-primary hover:text-on-primary transition-all group/btn active:scale-95">
+<span class="material-symbols-outlined text-xl group-hover/btn:animate-pulse">play_circle</span>
+                        Watch Ad to Unlock
+                    </button>
+</div>
+<!-- Download Optimized Resume -->
+<div class="bg-surface-container-low border border-outline/10 p-8 rounded-2xl shadow-sm hover:shadow-md transition-all flex flex-col h-full group">
+<div class="flex items-center gap-4 mb-6">
+<div class="w-12 h-12 rounded-xl bg-secondary/10 flex items-center justify-center text-secondary">
+<span class="material-symbols-outlined text-3xl">download</span>
+</div>
+<h3 class="text-xl font-bold font-headline text-on-surface">Download Optimized Resume</h3>
+</div>
+<p class="text-on-surface-variant mb-8 flex-grow">
+                        Export your fully optimized, high-score resume in ATS-friendly PDF or Docx formats. Ready to submit to your dream role.
+                    </p>
+<button class="w-full bg-surface-container-highest text-on-surface font-bold py-4 rounded-xl flex items-center justify-center gap-3 hover:bg-secondary hover:text-on-secondary transition-all group/btn active:scale-95">
+<span class="material-symbols-outlined text-xl group-hover/btn:animate-pulse">play_circle</span>
+                        Watch Ad to Unlock
+                    </button>
+</div>
+</div>
+<!-- Trust Badges -->
+<div class="mt-16 pt-8 border-t border-outline-variant/30 flex flex-wrap justify-center items-center gap-12 opacity-60">
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-2xl text-primary">lock_open</span>
+<span class="text-xs font-bold font-headline uppercase tracking-widest text-on-surface-variant">Secure Unlock</span>
+</div>
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-2xl text-secondary">verified_user</span>
+<span class="text-xs font-bold font-headline uppercase tracking-widest text-on-surface-variant">ATS Validated</span>
+</div>
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-2xl text-primary">auto_awesome</span>
+<span class="text-xs font-bold font-headline uppercase tracking-widest text-on-surface-variant">AI Enhanced</span>
+</div>
+</div>
+</div>
+</main>
+<!-- Footer -->
+<footer class="w-full py-8 bg-slate-50 dark:bg-slate-950 border-t border-slate-200/15 dark:border-slate-800/15 flex flex-col md:flex-row justify-between items-center px-8 gap-4">
+<div class="font-manrope font-bold text-slate-400">Career Curator</div>
+<div class="flex gap-6">
+<a class="font-inter text-xs text-slate-500 hover:underline" href="#">Privacy Policy</a>
+<a class="font-inter text-xs text-slate-500 hover:underline" href="#">Terms of Service</a>
+<a class="font-inter text-xs text-slate-500 hover:underline" href="#">Support</a>
+<a class="font-inter text-xs text-slate-500 hover:underline" href="#">Contact</a>
+</div>
+<div class="font-inter text-xs text-slate-500 opacity-80">© 2024 Career Curator ATS. All rights reserved.</div>
+</footer>
+</body></html>

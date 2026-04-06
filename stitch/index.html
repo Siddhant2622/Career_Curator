@@ -1,0 +1,953 @@
+<!DOCTYPE html>
+<html class="light" lang="en">
+<head>
+  <meta charset="utf-8"/>
+  <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+  <meta name="description" content="Free ATS Resume Checker & ATS Score Checker — Instantly scan your resume, find missing keywords, fix formatting issues, and get AI-powered suggestions to beat Applicant Tracking Systems and land more interviews."/>
+  <meta name="keywords" content="ATS checker, ATS score checker, ATS resume checker, resume checker, ATS scorer, ATS resume scanner, resume score checker, ATS compatibility checker, free ATS checker, resume keyword checker, applicant tracking system checker, resume optimization tool, ATS friendly resume checker, resume scanner free, career curator"/>
+  <meta name="author" content="Career Curator"/>
+  <meta name="robots" content="index, follow, max-snippet:-1, max-image-preview:large"/>
+  <link rel="canonical" href="https://careercurator.com/"/>
+  <!-- Open Graph -->
+  <meta property="og:type" content="website"/>
+  <meta property="og:title" content="Career Curator — Free ATS Resume Checker & Score Analyzer"/>
+  <meta property="og:description" content="Upload your resume and instantly get your ATS score. Find missing keywords, fix formatting, and get AI suggestions to land more interviews."/>
+  <meta property="og:url" content="https://careercurator.com/"/>
+  <meta property="og:site_name" content="Career Curator"/>
+  <meta property="og:image" content="https://careercurator.com/og-image.png"/>
+  <!-- Twitter Card -->
+  <meta name="twitter:card" content="summary_large_image"/>
+  <meta name="twitter:title" content="Career Curator — Free ATS Resume Checker & Score Analyzer"/>
+  <meta name="twitter:description" content="Scan your resume for ATS compatibility. Get your ATS score, keyword analysis, and AI-powered improvement tips — 100% free."/>
+  <meta name="twitter:image" content="https://careercurator.com/og-image.png"/>
+  <title>ATS Checker — Free ATS Resume Score Checker & Resume Scanner | Career Curator</title>
+  <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+  <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;600;700;800&family=Inter:wght@400;500;600&display=swap" rel="stylesheet"/>
+  <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet"/>
+  <!-- JSON-LD Structured Data -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "WebApplication",
+    "name": "Career Curator ATS Checker",
+    "url": "https://careercurator.com",
+    "description": "Free ATS Resume Checker that scans your resume for ATS compatibility, keyword matching, formatting issues, and provides AI-powered improvement suggestions.",
+    "applicationCategory": "BusinessApplication",
+    "operatingSystem": "Web",
+    "offers": { "@type": "Offer", "price": "0", "priceCurrency": "USD" },
+    "aggregateRating": { "@type": "AggregateRating", "ratingValue": "4.9", "ratingCount": "12480" }
+  }
+  </script>
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      { "@type": "Question", "name": "What is an ATS checker?", "acceptedAnswer": { "@type": "Answer", "text": "An ATS checker is a tool that scans your resume to determine how compatible it is with Applicant Tracking Systems used by employers to filter job applications." } },
+      { "@type": "Question", "name": "How does the ATS score checker work?", "acceptedAnswer": { "@type": "Answer", "text": "Our ATS score checker analyzes your resume against a job description, checking for keyword matches, formatting compatibility, section structure, and overall ATS readability to provide a score out of 100." } },
+      { "@type": "Question", "name": "Is Career Curator ATS resume checker free?", "acceptedAnswer": { "@type": "Answer", "text": "Yes, Career Curator offers a completely free ATS resume checker. Upload your resume and get your score, keyword analysis, and formatting alerts at no cost." } }
+    ]
+  }
+  </script>
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    "itemListElement": [{
+      "@type": "ListItem",
+      "position": 1,
+      "name": "Home",
+      "item": "https://careercurator.com"
+    }]
+  }
+  </script>
+  <script id="tailwind-config">
+    tailwind.config = {
+      darkMode: "class",
+      theme: {
+        extend: {
+          colors: {
+            "outline-variant": "#c3c6d7",
+            "inverse-on-surface": "#eff1f3",
+            "on-secondary-fixed-variant": "#005236",
+            "background": "#f7f9fb",
+            "on-error-container": "#93000a",
+            "tertiary-container": "#996100",
+            "on-tertiary-fixed-variant": "#653e00",
+            "on-surface": "#191c1e",
+            "on-primary-fixed": "#00174b",
+            "primary-container": "#2563eb",
+            "surface-container-high": "#e6e8ea",
+            "on-primary-fixed-variant": "#003ea8",
+            "surface-container-lowest": "#ffffff",
+            "surface-container-highest": "#e0e3e5",
+            "on-tertiary-fixed": "#2a1700",
+            "outline": "#737686",
+            "secondary-fixed-dim": "#4edea3",
+            "error": "#ba1a1a",
+            "tertiary": "#784b00",
+            "surface-dim": "#d8dadc",
+            "surface-container": "#eceef0",
+            "tertiary-fixed-dim": "#ffb95f",
+            "primary": "#004ac6",
+            "on-secondary-container": "#00714d",
+            "inverse-primary": "#b4c5ff",
+            "on-primary": "#ffffff",
+            "on-tertiary": "#ffffff",
+            "on-secondary": "#ffffff",
+            "on-tertiary-container": "#ffeedd",
+            "surface-container-low": "#f2f4f6",
+            "on-error": "#ffffff",
+            "secondary": "#006c49",
+            "on-primary-container": "#eeefff",
+            "surface-tint": "#0053db",
+            "primary-fixed": "#dbe1ff",
+            "inverse-surface": "#2d3133",
+            "error-container": "#ffdad6",
+            "secondary-fixed": "#6ffbbe",
+            "surface": "#f7f9fb",
+            "on-surface-variant": "#434655",
+            "surface-bright": "#f7f9fb",
+            "secondary-container": "#6cf8bb",
+            "tertiary-fixed": "#ffddb8",
+            "on-background": "#191c1e",
+            "on-secondary-fixed": "#002113",
+            "surface-variant": "#e0e3e5",
+            "primary-fixed-dim": "#b4c5ff"
+          },
+          borderRadius: {
+            "DEFAULT": "0.25rem",
+            "lg": "0.5rem",
+            "xl": "1.5rem",
+            "full": "9999px"
+          },
+          fontFamily: {
+            "headline": ["Manrope", "sans-serif"],
+            "body": ["Inter", "sans-serif"],
+            "label": ["Inter", "sans-serif"]
+          }
+        }
+      }
+    }
+  </script>
+  <style>
+    *, *::before, *::after { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body { font-family: 'Inter', sans-serif; background-color: #f7f9fb; margin: 0; }
+    h1, h2, h3, h4, .font-headline, .brand-font { font-family: 'Manrope', sans-serif; }
+    .material-symbols-outlined {
+      font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+      vertical-align: middle;
+      line-height: 1;
+    }
+    .glass-badge {
+      background: rgba(255,255,255,0.85);
+      backdrop-filter: blur(16px);
+      -webkit-backdrop-filter: blur(16px);
+      border: 1px solid rgba(255,255,255,0.6);
+    }
+    /* Animated gradient hero background */
+    .hero-bg {
+      background: linear-gradient(135deg, #f0f4ff 0%, #e8f5f0 50%, #fef3e2 100%);
+    }
+    /* Pulse animation for score circle */
+    @keyframes fadeInUp {
+      from { opacity: 0; transform: translateY(24px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+    .fade-in-up { animation: fadeInUp 0.6s ease both; }
+    .fade-delay-1 { animation-delay: 0.1s; }
+    .fade-delay-2 { animation-delay: 0.2s; }
+    .fade-delay-3 { animation-delay: 0.3s; }
+    .fade-delay-4 { animation-delay: 0.4s; }
+
+    /* Mobile menu */
+    #mobile-menu { display: none; }
+    #mobile-menu.open { display: flex; }
+
+    /* Tooltip */
+    [data-tooltip]:hover::after {
+      content: attr(data-tooltip);
+      position: absolute;
+      bottom: calc(100% + 8px);
+      left: 50%;
+      transform: translateX(-50%);
+      background: #191c1e;
+      color: #fff;
+      font-size: 11px;
+      padding: 4px 10px;
+      border-radius: 6px;
+      white-space: nowrap;
+      pointer-events: none;
+      z-index: 100;
+    }
+
+    /* Scrollbar */
+    ::-webkit-scrollbar { width: 6px; }
+    ::-webkit-scrollbar-track { background: #f2f4f6; }
+    ::-webkit-scrollbar-thumb { background: #c3c6d7; border-radius: 3px; }
+  </style>
+</head>
+<body class="bg-background text-on-surface">
+
+<!-- ===== TOP NAV ===== -->
+<nav id="topnav" class="fixed top-0 w-full z-50 bg-white/90 backdrop-blur-md border-b border-slate-200/60 shadow-sm flex justify-between items-center px-6 md:px-8 h-16">
+  <div class="flex items-center gap-8">
+    <a href="index.html" class="text-xl font-extrabold tracking-tight text-blue-800 font-headline flex items-center gap-2" id="nav-logo">
+      <span class="material-symbols-outlined text-primary text-2xl" style="font-variation-settings:'FILL' 1">assignment_turned_in</span>
+      Career Curator
+    </a>
+    <!-- Desktop Nav Links -->
+    <div class="hidden md:flex gap-6 items-center">
+      <a class="text-primary border-b-2 border-primary pb-0.5 font-body text-sm font-semibold hover:text-blue-700 transition-colors" href="#hero">Check Score</a>
+      <a class="text-slate-600 hover:text-primary transition-colors font-body text-sm" href="#features">Features</a>
+      <a class="text-slate-600 hover:text-primary transition-colors font-body text-sm" href="#how-it-works">How It Works</a>
+      <a class="text-slate-600 hover:text-primary transition-colors font-body text-sm" href="#testimonials">Reviews</a>
+      <a class="text-slate-600 hover:text-primary transition-colors font-body text-sm" href="#faq">FAQ</a>
+    </div>
+  </div>
+  <div class="hidden md:flex items-center gap-3">
+    <button id="btn-login-nav" onclick="openLoginModal()" class="text-primary font-body text-sm font-semibold hover:text-blue-700 transition-colors px-3 py-1.5 rounded-lg hover:bg-primary/5">Login</button>
+    <button id="btn-get-started-nav" onclick="goToDashboard()" class="bg-primary text-on-primary px-5 py-2 rounded-full text-sm font-bold shadow-md hover:shadow-lg hover:bg-blue-700 transition-all active:scale-95">Get Started Free</button>
+  </div>
+  <!-- Mobile Hamburger -->
+  <button id="mobile-menu-btn" class="md:hidden p-2 rounded-lg hover:bg-slate-100 transition-colors" onclick="toggleMobileMenu()" aria-label="Open menu" aria-expanded="false">
+    <span class="material-symbols-outlined text-on-surface">menu</span>
+  </button>
+</nav>
+
+<!-- Mobile Menu -->
+<div id="mobile-menu" class="fixed top-16 inset-x-0 z-40 flex-col bg-white border-b border-slate-200 shadow-lg px-6 py-4 gap-3">
+  <a class="block py-2 text-sm font-semibold text-primary border-b border-slate-100" href="#hero" onclick="closeMobileMenu()">Check Score</a>
+  <a class="block py-2 text-sm text-slate-700 border-b border-slate-100" href="#features" onclick="closeMobileMenu()">Features</a>
+  <a class="block py-2 text-sm text-slate-700 border-b border-slate-100" href="#how-it-works" onclick="closeMobileMenu()">How It Works</a>
+  <a class="block py-2 text-sm text-slate-700 border-b border-slate-100" href="#testimonials" onclick="closeMobileMenu()">Reviews</a>
+  <a class="block py-2 text-sm text-slate-700 border-b border-slate-100" href="#faq" onclick="closeMobileMenu()">FAQ</a>
+  <div class="flex gap-3 pt-2">
+    <button onclick="openLoginModal(); closeMobileMenu();" class="flex-1 border border-primary text-primary py-2 rounded-lg text-sm font-semibold">Login</button>
+    <button onclick="goToDashboard(); closeMobileMenu();" class="flex-1 bg-primary text-white py-2 rounded-lg text-sm font-bold">Get Started</button>
+  </div>
+</div>
+
+<!-- ===== MAIN CONTENT ===== -->
+<main class="pt-16">
+
+  <!-- HERO SECTION -->
+  <section class="hero-bg relative px-6 md:px-8 pt-16 md:pt-24 pb-24 md:pb-32 overflow-hidden" id="hero">
+    <!-- Decorative blobs -->
+    <div class="absolute -top-24 -right-24 w-96 h-96 bg-primary/10 rounded-full blur-3xl pointer-events-none"></div>
+    <div class="absolute -bottom-16 -left-16 w-72 h-72 bg-secondary/10 rounded-full blur-3xl pointer-events-none"></div>
+
+    <div class="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+      <!-- Left: Copy -->
+      <div class="space-y-7 fade-in-up">
+        <div class="inline-flex items-center px-3 py-1.5 rounded-full bg-secondary-container/40 text-on-secondary-container text-xs font-bold tracking-widest uppercase font-headline border border-secondary-container/60">
+          <span class="material-symbols-outlined text-[14px] mr-1.5" style="font-variation-settings:'FILL' 1">verified_user</span>
+          Trusted by 50,000+ Job Seekers
+        </div>
+
+        <h1 class="text-4xl sm:text-5xl lg:text-6xl xl:text-7xl font-extrabold tracking-tight text-on-surface leading-[1.1]">
+          Land More Interviews with a
+          <span class="block bg-gradient-to-r from-primary to-blue-400 bg-clip-text text-transparent">Higher ATS Score</span>
+        </h1>
+
+        <p class="text-lg text-on-surface-variant max-w-xl font-body leading-relaxed">
+          Upload your resume and instantly get a detailed ATS compatibility report — keyword analysis, formatting alerts, and AI-powered improvement suggestions.
+        </p>
+
+        <!-- Upload CTA -->
+        <div id="hero-upload-area" class="border-2 border-dashed border-primary/40 rounded-2xl p-6 bg-white/80 backdrop-blur hover:border-primary/70 hover:bg-white transition-all cursor-pointer group" onclick="triggerFileInput()">
+          <input type="file" id="resume-file-input" accept=".pdf,.doc,.docx" class="hidden" onchange="handleFileSelect(event)"/>
+          <div class="flex flex-col sm:flex-row items-center gap-4">
+            <div class="w-16 h-16 rounded-2xl bg-primary/10 flex items-center justify-center flex-shrink-0 group-hover:bg-primary/20 transition-colors">
+              <span class="material-symbols-outlined text-primary text-3xl">cloud_upload</span>
+            </div>
+            <div class="text-center sm:text-left">
+              <p class="font-headline font-bold text-on-surface text-base mb-1">Drop your resume here or <span class="text-primary underline">browse</span></p>
+              <p class="text-xs text-on-surface-variant">PDF, DOC, DOCX supported · Max 5MB · No signup needed</p>
+            </div>
+          </div>
+          <div id="file-selected-badge" class="hidden mt-3 flex items-center gap-2 px-3 py-2 bg-secondary-container/30 rounded-lg text-xs font-semibold text-on-secondary-container">
+            <span class="material-symbols-outlined text-secondary text-base">description</span>
+            <span id="file-name-display">resume.pdf</span>
+            <span class="ml-auto text-secondary cursor-pointer" onclick="clearFile(event)">✕</span>
+          </div>
+        </div>
+
+        <!-- Drag events handled in JS -->
+        <div class="flex flex-col sm:flex-row gap-3">
+          <button id="btn-analyze-hero" onclick="analyzeResume()" class="bg-gradient-to-r from-primary to-blue-500 text-white px-8 py-4 rounded-xl text-base font-bold shadow-lg hover:shadow-xl hover:-translate-y-0.5 transition-all flex items-center justify-center gap-2 active:scale-95">
+            <span class="material-symbols-outlined">bolt</span>
+            Analyze My Resume — Free
+          </button>
+          <button onclick="showSampleReport()" class="border border-outline-variant hover:bg-surface-container text-on-surface-variant px-8 py-4 rounded-xl text-base font-semibold transition-all flex items-center justify-center gap-2 bg-white">
+            <span class="material-symbols-outlined text-base">visibility</span>
+            See Sample Report
+          </button>
+        </div>
+
+        <div class="flex flex-wrap items-center gap-4 text-sm text-on-surface-variant font-medium">
+          <span class="flex items-center gap-1.5">
+            <span class="material-symbols-outlined text-secondary text-lg" style="font-variation-settings:'FILL' 1">check_circle</span>
+            No Signup Required
+          </span>
+          <span class="flex items-center gap-1.5">
+            <span class="material-symbols-outlined text-secondary text-lg" style="font-variation-settings:'FILL' 1">check_circle</span>
+            PDF &amp; DOCX Supported
+          </span>
+          <span class="flex items-center gap-1.5">
+            <span class="material-symbols-outlined text-secondary text-lg" style="font-variation-settings:'FILL' 1">check_circle</span>
+            100% Private &amp; Secure
+          </span>
+        </div>
+      </div>
+
+      <!-- Right: Hero Graphic -->
+      <div class="relative fade-in-up fade-delay-2 flex justify-center">
+        <div class="relative z-10 bg-white rounded-2xl p-6 shadow-2xl max-w-md w-full">
+          <!-- Mock report preview -->
+          <div class="flex items-center justify-between mb-4">
+            <div>
+              <p class="text-xs text-on-surface-variant font-bold uppercase tracking-widest">ATS Analysis Report</p>
+              <p class="font-headline font-extrabold text-on-surface">Software Engineer Resume</p>
+            </div>
+            <span class="px-2.5 py-1 bg-secondary-container text-on-secondary-container rounded-full text-[10px] font-bold uppercase tracking-wider">Optimized</span>
+          </div>
+
+          <!-- Score gauge -->
+          <div class="flex items-center gap-6 p-4 bg-surface-container-low rounded-xl mb-4">
+            <div class="relative w-20 h-20 flex-shrink-0">
+              <svg class="w-full h-full -rotate-90" viewBox="0 0 80 80">
+                <circle cx="40" cy="40" r="34" fill="transparent" stroke="#e0e3e5" stroke-width="8"/>
+                <circle cx="40" cy="40" r="34" fill="transparent" stroke="#006c49" stroke-width="8"
+                  stroke-dasharray="213.6" stroke-dashoffset="32" stroke-linecap="round"/>
+              </svg>
+              <div class="absolute inset-0 flex flex-col items-center justify-center">
+                <span class="font-headline font-extrabold text-lg text-on-surface">85%</span>
+              </div>
+            </div>
+            <div>
+              <p class="font-bold text-on-surface text-sm mb-1">ATS Score</p>
+              <div class="w-32 bg-surface-container-highest h-2 rounded-full overflow-hidden">
+                <div class="h-full w-[85%] bg-gradient-to-r from-secondary to-secondary-container rounded-full"></div>
+              </div>
+              <p class="text-xs text-on-surface-variant mt-1">Top 15% of applicants</p>
+            </div>
+          </div>
+
+          <!-- Keywords preview -->
+          <div class="mb-4">
+            <p class="text-[10px] font-bold text-on-surface-variant uppercase tracking-widest mb-2">Missing Keywords</p>
+            <div class="flex flex-wrap gap-2">
+              <span class="bg-error-container text-on-error-container text-[10px] px-2.5 py-1 rounded-full font-bold">AWS Lambda</span>
+              <span class="bg-error-container text-on-error-container text-[10px] px-2.5 py-1 rounded-full font-bold">CI/CD</span>
+              <span class="bg-error-container text-on-error-container text-[10px] px-2.5 py-1 rounded-full font-bold">GraphQL</span>
+            </div>
+          </div>
+
+          <!-- Floating glass badge -->
+          <div class="glass-badge absolute -top-5 -left-5 p-3 rounded-xl shadow-lg">
+            <div class="flex items-center gap-2">
+              <span class="material-symbols-outlined text-primary text-xl" style="font-variation-settings:'FILL' 1">analytics</span>
+              <div>
+                <p class="font-headline font-extrabold text-base text-on-surface">12/15</p>
+                <p class="text-[9px] text-on-surface-variant uppercase tracking-wide font-bold">Keywords Matched</p>
+              </div>
+            </div>
+          </div>
+
+          <!-- Floating glass badge 2 -->
+          <div class="glass-badge absolute -bottom-4 -right-4 p-3 rounded-xl shadow-lg flex items-center gap-2">
+            <span class="text-yellow-500 text-sm">★★★★★</span>
+            <span class="text-xs font-bold text-on-surface">4.9/5</span>
+          </div>
+        </div>
+
+        <!-- Decorative shapes -->
+        <div class="absolute -top-8 -right-8 w-48 h-48 bg-primary-fixed/30 rounded-full blur-3xl -z-10 pointer-events-none"></div>
+        <div class="absolute -bottom-8 -left-8 w-40 h-40 bg-secondary-fixed/30 rounded-full blur-3xl -z-10 pointer-events-none"></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- HOW IT WORKS -->
+  <section class="bg-white py-20 px-6 md:px-8" id="how-it-works">
+    <div class="max-w-5xl mx-auto text-center mb-14 fade-in-up">
+      <p class="text-xs font-bold text-primary uppercase tracking-widest mb-3">Simple Process</p>
+      <h2 class="text-3xl md:text-4xl font-extrabold tracking-tight text-on-surface font-headline">Get results in 3 easy steps</h2>
+    </div>
+    <div class="max-w-5xl mx-auto grid grid-cols-1 md:grid-cols-3 gap-8 relative">
+      <!-- Connector line (desktop) -->
+      <div class="hidden md:block absolute top-10 left-[calc(16.67%+1rem)] right-[calc(16.67%+1rem)] h-0.5 bg-gradient-to-r from-primary/30 via-secondary/30 to-tertiary/30"></div>
+
+      <div class="relative flex flex-col items-center text-center gap-4 fade-in-up fade-delay-1">
+        <div class="w-20 h-20 rounded-2xl bg-primary/10 flex items-center justify-center relative z-10">
+          <span class="material-symbols-outlined text-primary text-4xl">upload_file</span>
+        </div>
+        <div class="w-7 h-7 rounded-full bg-primary flex items-center justify-center text-white text-xs font-bold absolute -top-3 -right-3 z-20 shadow-md">1</div>
+        <h3 class="font-headline font-bold text-on-surface text-lg">Upload Resume</h3>
+        <p class="text-sm text-on-surface-variant leading-relaxed">Drag and drop or select your PDF/DOCX resume file. No account needed.</p>
+      </div>
+
+      <div class="relative flex flex-col items-center text-center gap-4 fade-in-up fade-delay-2">
+        <div class="w-20 h-20 rounded-2xl bg-secondary/10 flex items-center justify-center relative z-10">
+          <span class="material-symbols-outlined text-secondary text-4xl">manage_search</span>
+        </div>
+        <div class="w-7 h-7 rounded-full bg-secondary flex items-center justify-center text-white text-xs font-bold absolute -top-3 -right-3 z-20 shadow-md">2</div>
+        <h3 class="font-headline font-bold text-on-surface text-lg">AI Analysis</h3>
+        <p class="text-sm text-on-surface-variant leading-relaxed">Our engine scans keywords, formatting, and structure against the job description.</p>
+      </div>
+
+      <div class="relative flex flex-col items-center text-center gap-4 fade-in-up fade-delay-3">
+        <div class="w-20 h-20 rounded-2xl bg-tertiary/10 flex items-center justify-center relative z-10">
+          <span class="material-symbols-outlined text-tertiary text-4xl">insights</span>
+        </div>
+        <div class="w-7 h-7 rounded-full bg-tertiary flex items-center justify-center text-white text-xs font-bold absolute -top-3 -right-3 z-20 shadow-md">3</div>
+        <h3 class="font-headline font-bold text-on-surface text-lg">Get Your Score</h3>
+        <p class="text-sm text-on-surface-variant leading-relaxed">Receive actionable insights, a score, and specific improvement suggestions.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- FEATURES BENTO GRID -->
+  <section class="bg-surface-container-low py-24 px-6 md:px-8" id="features">
+    <div class="max-w-7xl mx-auto">
+      <div class="text-center mb-16 space-y-4 fade-in-up">
+        <p class="text-xs font-bold text-primary uppercase tracking-widest">What You Get</p>
+        <h2 class="text-3xl md:text-4xl font-extrabold tracking-tight text-on-surface font-headline">Comprehensive Resume Analysis</h2>
+        <p class="text-on-surface-variant max-w-2xl mx-auto text-base md:text-lg">Our AI engine dissects your resume from four critical angles to ensure it passes even the strictest ATS filters.</p>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-12 gap-6">
+        <!-- Card 1 - Large -->
+        <div class="md:col-span-8 bg-white p-8 md:p-10 rounded-2xl shadow-md hover:shadow-xl transition-all duration-300 flex flex-col md:flex-row items-center gap-8 group cursor-pointer fade-in-up fade-delay-1" onclick="goToDashboard()">
+          <div class="space-y-5 flex-1">
+            <div class="w-14 h-14 rounded-2xl bg-primary-fixed flex items-center justify-center group-hover:scale-110 transition-transform">
+              <span class="material-symbols-outlined text-primary text-3xl">description</span>
+            </div>
+            <h3 class="text-xl md:text-2xl font-bold font-headline">Smart Resume Upload</h3>
+            <p class="text-on-surface-variant font-body leading-relaxed text-sm md:text-base">
+              Simply drag &amp; drop your document. We support PDF, DOC, and DOCX formats and maintain strict privacy — your data is never shared.
+            </p>
+            <span class="inline-flex items-center text-primary text-sm font-semibold gap-1 group-hover:gap-2 transition-all">
+              Try it now <span class="material-symbols-outlined text-base">arrow_forward</span>
+            </span>
+          </div>
+          <div class="hidden lg:flex w-48 h-48 rounded-2xl bg-gradient-to-br from-primary-fixed/60 to-primary/20 items-center justify-center flex-shrink-0 group-hover:scale-105 transition-transform">
+            <span class="material-symbols-outlined text-primary text-7xl opacity-60">upload_file</span>
+          </div>
+        </div>
+
+        <!-- Card 2 -->
+        <div class="md:col-span-4 bg-white p-8 md:p-10 rounded-2xl shadow-md hover:shadow-xl transition-all duration-300 space-y-5 group cursor-pointer fade-in-up fade-delay-2" onclick="goToDashboard()">
+          <div class="w-14 h-14 rounded-2xl bg-secondary-container flex items-center justify-center group-hover:scale-110 transition-transform">
+            <span class="material-symbols-outlined text-secondary text-3xl">key</span>
+          </div>
+          <h3 class="text-xl md:text-2xl font-bold font-headline">Keyword Analysis</h3>
+          <p class="text-on-surface-variant font-body leading-relaxed text-sm">
+            Discover the exact industry terms recruiters search for. See matched &amp; missing keywords at a glance.
+          </p>
+        </div>
+
+        <!-- Card 3 -->
+        <div class="md:col-span-4 bg-white p-8 md:p-10 rounded-2xl shadow-md hover:shadow-xl transition-all duration-300 space-y-5 group cursor-pointer fade-in-up fade-delay-3" onclick="goToDashboard()">
+          <div class="w-14 h-14 rounded-2xl bg-tertiary-fixed flex items-center justify-center group-hover:scale-110 transition-transform">
+            <span class="material-symbols-outlined text-tertiary text-3xl">psychology</span>
+          </div>
+          <h3 class="text-xl md:text-2xl font-bold font-headline">AI Suggestions</h3>
+          <p class="text-on-surface-variant font-body leading-relaxed text-sm">
+            Get personalized rewrites and bullet point improvements that highlight your achievements effectively.
+          </p>
+        </div>
+
+        <!-- Card 4 - Large -->
+        <div class="md:col-span-8 bg-white p-8 md:p-10 rounded-2xl shadow-md hover:shadow-xl transition-all duration-300 flex flex-col md:flex-row items-center gap-8 group cursor-pointer fade-in-up fade-delay-4" onclick="goToDashboard()">
+          <div class="hidden lg:flex w-48 h-48 rounded-2xl bg-gradient-to-br from-secondary-fixed/60 to-secondary/20 items-center justify-center flex-shrink-0 group-hover:scale-105 transition-transform">
+            <span class="material-symbols-outlined text-secondary text-7xl opacity-60">assignment_turned_in</span>
+          </div>
+          <div class="space-y-5 flex-1">
+            <div class="w-14 h-14 rounded-2xl bg-primary-container flex items-center justify-center group-hover:scale-110 transition-transform">
+              <span class="material-symbols-outlined text-on-primary text-3xl">assignment_turned_in</span>
+            </div>
+            <h3 class="text-xl md:text-2xl font-bold font-headline">ATS Score Matching</h3>
+            <p class="text-on-surface-variant font-body leading-relaxed text-sm md:text-base">
+              See exactly how you rank against the job description. Learn how to bridge the gap and tailor your resume for maximum impact.
+            </p>
+            <span class="inline-flex items-center text-primary text-sm font-semibold gap-1 group-hover:gap-2 transition-all">
+              View sample report <span class="material-symbols-outlined text-base">arrow_forward</span>
+            </span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- STATS BAND -->
+  <section class="bg-primary py-12 px-6 md:px-8">
+    <div class="max-w-5xl mx-auto grid grid-cols-2 md:grid-cols-4 gap-8 text-center">
+      <div>
+        <p class="text-3xl md:text-4xl font-extrabold text-white font-headline">50K+</p>
+        <p class="text-primary-fixed text-sm mt-1">Resumes Scanned</p>
+      </div>
+      <div>
+        <p class="text-3xl md:text-4xl font-extrabold text-white font-headline">85%</p>
+        <p class="text-primary-fixed text-sm mt-1">Avg. Score Improvement</p>
+      </div>
+      <div>
+        <p class="text-3xl md:text-4xl font-extrabold text-white font-headline">4.9★</p>
+        <p class="text-primary-fixed text-sm mt-1">User Rating</p>
+      </div>
+      <div>
+        <p class="text-3xl md:text-4xl font-extrabold text-white font-headline">100%</p>
+        <p class="text-primary-fixed text-sm mt-1">Free to Use</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- TESTIMONIALS -->
+  <section class="bg-white py-20 px-6 md:px-8" id="testimonials">
+    <div class="max-w-6xl mx-auto">
+      <div class="text-center mb-14 fade-in-up">
+        <p class="text-xs font-bold text-primary uppercase tracking-widest mb-3">Real Results</p>
+        <h2 class="text-3xl md:text-4xl font-extrabold tracking-tight text-on-surface font-headline">Trusted by Job Seekers Worldwide</h2>
+        <p class="text-on-surface-variant mt-3 max-w-xl mx-auto">Thousands of professionals have used our ATS resume checker to optimize their resumes and land interviews at top companies.</p>
+      </div>
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+        <div class="bg-surface-container-low rounded-2xl p-6 hover:shadow-lg transition-shadow fade-in-up fade-delay-1">
+          <div class="flex items-center gap-1 mb-3"><span class="text-yellow-500 text-sm">★★★★★</span></div>
+          <p class="text-sm text-on-surface-variant leading-relaxed mb-4">"Career Curator's ATS checker found 5 missing keywords in my resume. After adding them, I went from 0 callbacks to 3 interviews in one week!"</p>
+          <div class="flex items-center gap-3"><div class="w-9 h-9 rounded-full bg-primary/10 flex items-center justify-center font-headline font-bold text-primary text-sm">SP</div><div><p class="text-sm font-bold text-on-surface">Sarah P.</p><p class="text-[10px] text-on-surface-variant uppercase tracking-wider">Software Engineer</p></div></div>
+        </div>
+        <div class="bg-surface-container-low rounded-2xl p-6 hover:shadow-lg transition-shadow fade-in-up fade-delay-2">
+          <div class="flex items-center gap-1 mb-3"><span class="text-yellow-500 text-sm">★★★★★</span></div>
+          <p class="text-sm text-on-surface-variant leading-relaxed mb-4">"The formatting alerts saved me — I had invisible tables that were blocking ATS parsers. Best free resume scanner I've found."</p>
+          <div class="flex items-center gap-3"><div class="w-9 h-9 rounded-full bg-secondary/10 flex items-center justify-center font-headline font-bold text-secondary text-sm">MK</div><div><p class="text-sm font-bold text-on-surface">Michael K.</p><p class="text-[10px] text-on-surface-variant uppercase tracking-wider">Marketing Manager</p></div></div>
+        </div>
+        <div class="bg-surface-container-low rounded-2xl p-6 hover:shadow-lg transition-shadow fade-in-up fade-delay-3">
+          <div class="flex items-center gap-1 mb-3"><span class="text-yellow-500 text-sm">★★★★★</span></div>
+          <p class="text-sm text-on-surface-variant leading-relaxed mb-4">"My ATS score jumped from 52% to 89% after following the AI suggestions. Landed my dream job at a Fortune 500 company."</p>
+          <div class="flex items-center gap-3"><div class="w-9 h-9 rounded-full bg-tertiary/10 flex items-center justify-center font-headline font-bold text-tertiary text-sm">JR</div><div><p class="text-sm font-bold text-on-surface">Jessica R.</p><p class="text-[10px] text-on-surface-variant uppercase tracking-wider">Data Analyst</p></div></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FAQ SECTION (SEO) -->
+  <section class="bg-surface-container-low py-20 px-6 md:px-8" id="faq">
+    <div class="max-w-3xl mx-auto">
+      <div class="text-center mb-14 fade-in-up">
+        <p class="text-xs font-bold text-primary uppercase tracking-widest mb-3">FAQ</p>
+        <h2 class="text-3xl md:text-4xl font-extrabold tracking-tight text-on-surface font-headline">Frequently Asked Questions</h2>
+      </div>
+      <div class="space-y-4 fade-in-up">
+        <details class="group bg-white rounded-2xl shadow-sm border border-slate-100 overflow-hidden" open>
+          <summary class="flex items-center justify-between cursor-pointer px-6 py-5 font-headline font-bold text-on-surface text-sm hover:bg-slate-50 transition-colors">
+            What is an ATS checker and why do I need one?
+            <span class="material-symbols-outlined text-outline transition-transform group-open:rotate-180">expand_more</span>
+          </summary>
+          <div class="px-6 pb-5 text-sm text-on-surface-variant leading-relaxed">An ATS (Applicant Tracking System) checker is a tool that scans your resume to determine how well it will be parsed by the automated recruitment software that over 98% of Fortune 500 companies use. Without proper ATS optimization, your resume might be rejected before a human ever sees it. Career Curator's free ATS checker analyzes your resume for keyword matches, formatting compatibility, and structural issues.</div>
+        </details>
+        <details class="group bg-white rounded-2xl shadow-sm border border-slate-100 overflow-hidden">
+          <summary class="flex items-center justify-between cursor-pointer px-6 py-5 font-headline font-bold text-on-surface text-sm hover:bg-slate-50 transition-colors">
+            How does the ATS score checker work?
+            <span class="material-symbols-outlined text-outline transition-transform group-open:rotate-180">expand_more</span>
+          </summary>
+          <div class="px-6 pb-5 text-sm text-on-surface-variant leading-relaxed">Our ATS score checker analyzes your resume in four key areas: keyword matching against the target job description, formatting and structural compliance (tables, headers, fonts), section detection (experience, education, skills), and overall readability scoring. You receive a score out of 100 along with specific, actionable recommendations.</div>
+        </details>
+        <details class="group bg-white rounded-2xl shadow-sm border border-slate-100 overflow-hidden">
+          <summary class="flex items-center justify-between cursor-pointer px-6 py-5 font-headline font-bold text-on-surface text-sm hover:bg-slate-50 transition-colors">
+            Is this ATS resume checker really free?
+            <span class="material-symbols-outlined text-outline transition-transform group-open:rotate-180">expand_more</span>
+          </summary>
+          <div class="px-6 pb-5 text-sm text-on-surface-variant leading-relaxed">Yes! Career Curator's core ATS resume checker is 100% free. Upload your resume, get your ATS compatibility score, keyword analysis, and formatting alerts at no cost. Premium features like AI-powered content suggestions and the optimized resume download can be unlocked by watching a short ad — no payment required.</div>
+        </details>
+        <details class="group bg-white rounded-2xl shadow-sm border border-slate-100 overflow-hidden">
+          <summary class="flex items-center justify-between cursor-pointer px-6 py-5 font-headline font-bold text-on-surface text-sm hover:bg-slate-50 transition-colors">
+            What file formats are supported?
+            <span class="material-symbols-outlined text-outline transition-transform group-open:rotate-180">expand_more</span>
+          </summary>
+          <div class="px-6 pb-5 text-sm text-on-surface-variant leading-relaxed">Career Curator supports PDF, DOC, and DOCX file formats — the three most common resume file types. We recommend uploading PDFs for the most accurate analysis, as they preserve formatting exactly as intended.</div>
+        </details>
+        <details class="group bg-white rounded-2xl shadow-sm border border-slate-100 overflow-hidden">
+          <summary class="flex items-center justify-between cursor-pointer px-6 py-5 font-headline font-bold text-on-surface text-sm hover:bg-slate-50 transition-colors">
+            How can I improve my ATS resume score?
+            <span class="material-symbols-outlined text-outline transition-transform group-open:rotate-180">expand_more</span>
+          </summary>
+          <div class="px-6 pb-5 text-sm text-on-surface-variant leading-relaxed">To improve your ATS score: (1) Include keywords from the job description naturally in your experience and skills sections. (2) Use standard section headings like "Experience", "Education", and "Skills". (3) Avoid tables, columns, images, and text boxes. (4) Use standard fonts like Arial or Calibri. (5) Save your resume as a PDF. Our ATS checker gives you specific tips tailored to your resume.</div>
+        </details>
+      </div>
+    </div>
+  </section>
+
+  <!-- FINAL CTA -->
+  <section class="py-24 px-6 md:px-8 overflow-hidden relative bg-white">
+    <div class="absolute inset-0 bg-gradient-to-br from-primary/5 to-secondary/5 -z-10"></div>
+    <div class="max-w-4xl mx-auto text-center space-y-8 fade-in-up">
+      <h2 class="text-4xl md:text-5xl font-extrabold tracking-tight font-headline text-on-surface">Ready to get more interviews?</h2>
+      <p class="text-lg text-on-surface-variant leading-relaxed max-w-2xl mx-auto">
+        Stop guessing. Join thousands of professionals who used Career Curator to land their dream job.
+      </p>
+      <div class="flex flex-col sm:flex-row gap-4 justify-center">
+        <button onclick="goToDashboard()" class="bg-primary text-on-primary px-10 py-5 rounded-xl text-xl font-bold shadow-2xl hover:bg-blue-700 transition-all active:scale-95 inline-flex items-center justify-center gap-2">
+          Upload Your Resume Now
+          <span class="material-symbols-outlined">arrow_forward</span>
+        </button>
+        <button onclick="showSampleReport()" class="border-2 border-primary text-primary px-10 py-5 rounded-xl text-xl font-semibold hover:bg-primary/5 transition-all inline-flex items-center justify-center gap-2">
+          View Sample Report
+        </button>
+      </div>
+      <div class="flex flex-wrap justify-center gap-6 text-sm text-on-surface-variant mt-4">
+        <span class="flex items-center gap-1">
+          <span class="material-symbols-outlined text-secondary text-base" style="font-variation-settings:'FILL' 1">shield</span>
+          Bank-Level Privacy
+        </span>
+        <span class="flex items-center gap-1">
+          <span class="material-symbols-outlined text-secondary text-base" style="font-variation-settings:'FILL' 1">flash_on</span>
+          Results in 30 Seconds
+        </span>
+        <span class="flex items-center gap-1">
+          <span class="material-symbols-outlined text-secondary text-base" style="font-variation-settings:'FILL' 1">sentiment_satisfied</span>
+          No Credit Card Required
+        </span>
+      </div>
+    </div>
+  </section>
+</main>
+
+<!-- FOOTER -->
+<footer class="w-full py-10 bg-slate-50 border-t border-slate-200" id="footer">
+  <div class="max-w-7xl mx-auto px-6 md:px-8">
+    <div class="flex flex-col md:flex-row justify-between items-center gap-6 mb-8">
+      <div class="flex flex-col items-center md:items-start gap-1.5">
+        <a href="index.html" class="font-headline font-extrabold text-on-surface text-lg flex items-center gap-1.5">
+          <span class="material-symbols-outlined text-primary" style="font-variation-settings:'FILL' 1">assignment_turned_in</span>
+          Career Curator
+        </a>
+        <span class="text-xs text-slate-500">© 2025 Career Curator ATS. All rights reserved.</span>
+      </div>
+      <div class="flex flex-wrap justify-center gap-6">
+        <a class="text-xs text-slate-500 hover:text-primary hover:underline transition-colors" href="#">Privacy Policy</a>
+        <a class="text-xs text-slate-500 hover:text-primary hover:underline transition-colors" href="#">Terms of Service</a>
+        <a class="text-xs text-slate-500 hover:text-primary hover:underline transition-colors" href="#">Support</a>
+        <a class="text-xs text-slate-500 hover:text-primary hover:underline transition-colors" href="#">Contact</a>
+      </div>
+    </div>
+    <div class="text-center text-xs text-slate-400">
+      Your resume data is processed locally and never stored on our servers.
+    </div>
+  </div>
+</footer>
+
+<!-- STICKY BOTTOM BANNER AD -->
+<div id="bottom-banner-ad" class="fixed bottom-0 left-0 w-full z-[90] transition-all duration-300">
+  <div class="bg-gradient-to-r from-slate-900 via-blue-900 to-slate-900 border-t border-blue-500/30 shadow-[0_-4px_24px_rgba(0,0,0,0.3)]">
+    <div class="max-w-7xl mx-auto px-4 py-3 flex items-center justify-between gap-4">
+      <div class="flex items-center gap-3">
+        <div class="w-8 h-8 rounded-lg bg-blue-500/20 flex items-center justify-center flex-shrink-0">
+          <span class="material-symbols-outlined text-blue-400 text-lg">ads_click</span>
+        </div>
+        <p class="text-white text-xs sm:text-sm font-medium">🔥 <strong>Limited Offer:</strong> Get your full ATS report with AI suggestions — <span class="text-blue-300 font-bold">100% Free</span></p>
+      </div>
+      <div class="flex items-center gap-2 flex-shrink-0">
+        <button onclick="goToDashboard()" class="bg-blue-500 hover:bg-blue-400 text-white px-4 py-2 rounded-lg text-xs font-bold transition-all active:scale-95 shadow-lg">Check Now</button>
+        <button onclick="dismissBottomBanner()" class="text-slate-400 hover:text-white p-1 transition-colors" aria-label="Close">
+          <span class="material-symbols-outlined text-lg">close</span>
+        </button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- FULL-SCREEN INTERSTITIAL AD -->
+<div id="interstitial-ad" class="fixed inset-0 z-[999] flex items-center justify-center" style="display:none">
+  <div class="absolute inset-0 bg-black/70 backdrop-blur-md"></div>
+  <div class="relative z-10 bg-white rounded-3xl shadow-2xl w-[94%] max-w-lg overflow-hidden animate-[fadeInUp_0.4s_ease]">
+    <!-- Ad Header -->
+    <div class="relative bg-gradient-to-br from-blue-600 via-indigo-600 to-purple-700 px-8 pt-10 pb-14 text-center">
+      <div class="absolute top-3 right-3">
+        <button id="interstitial-close-btn" onclick="closeInterstitial()" class="text-white/50 hover:text-white bg-white/10 hover:bg-white/20 rounded-full w-8 h-8 flex items-center justify-center transition-all" style="display:none" aria-label="Close">
+          <span class="material-symbols-outlined text-lg">close</span>
+        </button>
+      </div>
+      <div class="absolute top-3 left-3 px-2 py-1 bg-white/10 rounded text-[9px] text-white/60 uppercase tracking-widest font-bold">Sponsored</div>
+      <div class="w-16 h-16 rounded-2xl bg-white/20 backdrop-blur flex items-center justify-center mx-auto mb-4">
+        <span class="material-symbols-outlined text-white text-4xl" style="font-variation-settings:'FILL' 1">assignment_turned_in</span>
+      </div>
+      <h2 class="text-2xl font-extrabold text-white font-headline mb-2">Your Resume Could Score Higher</h2>
+      <p class="text-blue-100 text-sm max-w-xs mx-auto">Join 50,000+ job seekers who improved their ATS score with Career Curator</p>
+    </div>
+    <!-- Ad Body -->
+    <div class="px-8 py-6 -mt-6">
+      <div class="bg-white rounded-2xl shadow-lg p-5 border border-slate-100 mb-5">
+        <div class="flex items-center gap-4 mb-4">
+          <div class="relative w-14 h-14 flex-shrink-0">
+            <svg class="w-full h-full -rotate-90" viewBox="0 0 56 56"><circle cx="28" cy="28" r="23" fill="transparent" stroke="#e0e3e5" stroke-width="6"/><circle cx="28" cy="28" r="23" fill="transparent" stroke="#006c49" stroke-width="6" stroke-dasharray="144.5" stroke-dashoffset="22" stroke-linecap="round"/></svg>
+            <div class="absolute inset-0 flex items-center justify-center"><span class="font-headline font-extrabold text-sm">85%</span></div>
+          </div>
+          <div>
+            <p class="font-bold text-sm text-on-surface">Average Score After Optimization</p>
+            <p class="text-xs text-on-surface-variant">Most users improve by 30+ points</p>
+          </div>
+        </div>
+        <div class="flex gap-2">
+          <span class="px-2 py-1 bg-secondary-container/40 text-on-secondary-container text-[10px] rounded-full font-bold">✓ Keyword Match</span>
+          <span class="px-2 py-1 bg-secondary-container/40 text-on-secondary-container text-[10px] rounded-full font-bold">✓ Format Check</span>
+          <span class="px-2 py-1 bg-secondary-container/40 text-on-secondary-container text-[10px] rounded-full font-bold">✓ AI Tips</span>
+        </div>
+      </div>
+      <button onclick="closeInterstitial(); goToDashboard();" class="w-full bg-gradient-to-r from-primary to-blue-500 text-white py-4 rounded-xl font-bold text-base shadow-lg hover:shadow-xl transition-all active:scale-[.97] flex items-center justify-center gap-2 mb-3">
+        <span class="material-symbols-outlined">bolt</span> Check My Resume Free
+      </button>
+      <div class="flex items-center justify-center">
+        <span id="interstitial-timer" class="text-xs text-slate-400">You can close this in <strong id="interstitial-countdown">3</strong>s</span>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ===== MODALS ===== -->
+
+<!-- Login Modal -->
+<div id="login-modal" class="fixed inset-0 z-[100] flex items-center justify-center p-4 hidden" role="dialog" aria-modal="true" aria-labelledby="login-title">
+  <div class="absolute inset-0 bg-black/40 backdrop-blur-sm" onclick="closeLoginModal()"></div>
+  <div class="relative bg-white rounded-2xl shadow-2xl p-8 w-full max-w-md z-10 animate-[fadeInUp_0.3s_ease]">
+    <button onclick="closeLoginModal()" class="absolute top-4 right-4 text-slate-400 hover:text-slate-600 transition-colors" aria-label="Close">
+      <span class="material-symbols-outlined">close</span>
+    </button>
+    <div class="flex items-center gap-3 mb-6">
+      <span class="material-symbols-outlined text-primary text-3xl" style="font-variation-settings:'FILL' 1">assignment_turned_in</span>
+      <h2 id="login-title" class="font-headline font-extrabold text-2xl text-on-surface">Welcome Back</h2>
+    </div>
+    <form onsubmit="handleLogin(event)" class="space-y-4">
+      <div>
+        <label class="block text-sm font-semibold text-on-surface mb-1.5" for="login-email">Email</label>
+        <input type="email" id="login-email" required placeholder="you@example.com"
+          class="w-full border border-outline-variant rounded-xl px-4 py-3 text-sm focus:outline-none focus:ring-2 focus:ring-primary/40 focus:border-primary transition-all"/>
+      </div>
+      <div>
+        <label class="block text-sm font-semibold text-on-surface mb-1.5" for="login-password">Password</label>
+        <input type="password" id="login-password" required placeholder="••••••••"
+          class="w-full border border-outline-variant rounded-xl px-4 py-3 text-sm focus:outline-none focus:ring-2 focus:ring-primary/40 focus:border-primary transition-all"/>
+      </div>
+      <button type="submit" class="w-full bg-primary text-white py-3.5 rounded-xl font-bold text-base hover:bg-blue-700 transition-colors active:scale-95 mt-2">
+        Sign In
+      </button>
+    </form>
+    <p class="text-center text-xs text-slate-500 mt-5">
+      Don't have an account? <a href="#" onclick="closeLoginModal(); goToDashboard();" class="text-primary font-semibold hover:underline">Start free</a>
+    </p>
+  </div>
+</div>
+
+<!-- Analyzing Modal -->
+<div id="analyzing-modal" class="fixed inset-0 z-[100] flex items-center justify-center p-4 hidden" role="dialog" aria-modal="true">
+  <div class="absolute inset-0 bg-black/40 backdrop-blur-sm"></div>
+  <div class="relative bg-white rounded-2xl shadow-2xl p-10 w-full max-w-sm z-10 text-center">
+    <div class="w-20 h-20 rounded-full bg-primary/10 flex items-center justify-center mx-auto mb-5 animate-pulse">
+      <span class="material-symbols-outlined text-primary text-4xl">analytics</span>
+    </div>
+    <h3 class="font-headline font-extrabold text-xl text-on-surface mb-2">Analyzing Your Resume</h3>
+    <p class="text-sm text-on-surface-variant mb-6">Our AI is scanning for keywords, formatting, and ATS compatibility...</p>
+    <div class="w-full bg-surface-container-highest rounded-full h-2 overflow-hidden">
+      <div id="analyze-progress-bar" class="h-full bg-gradient-to-r from-primary to-secondary rounded-full transition-all duration-300" style="width: 0%"></div>
+    </div>
+    <p id="analyze-status-text" class="text-xs text-on-surface-variant mt-3">Starting analysis...</p>
+  </div>
+</div>
+
+<script>
+  // ===== MOBILE MENU =====
+  function toggleMobileMenu() {
+    const menu = document.getElementById('mobile-menu');
+    const btn = document.getElementById('mobile-menu-btn');
+    const isOpen = menu.classList.contains('open');
+    menu.classList.toggle('open', !isOpen);
+    btn.setAttribute('aria-expanded', !isOpen);
+  }
+  function closeMobileMenu() {
+    document.getElementById('mobile-menu').classList.remove('open');
+    document.getElementById('mobile-menu-btn').setAttribute('aria-expanded', 'false');
+  }
+
+  // ===== FILE UPLOAD =====
+  function triggerFileInput() {
+    document.getElementById('resume-file-input').click();
+  }
+  function handleFileSelect(event) {
+    const file = event.target.files[0];
+    if (file) showFileBadge(file.name);
+  }
+  function showFileBadge(name) {
+    const badge = document.getElementById('file-selected-badge');
+    const nameEl = document.getElementById('file-name-display');
+    nameEl.textContent = name;
+    badge.classList.remove('hidden');
+    badge.classList.add('flex');
+  }
+  function clearFile(event) {
+    event.stopPropagation();
+    document.getElementById('resume-file-input').value = '';
+    const badge = document.getElementById('file-selected-badge');
+    badge.classList.add('hidden');
+    badge.classList.remove('flex');
+  }
+
+  // Drag & Drop
+  const uploadArea = document.getElementById('hero-upload-area');
+  uploadArea.addEventListener('dragover', (e) => {
+    e.preventDefault();
+    uploadArea.classList.add('border-primary', 'bg-primary/5');
+  });
+  uploadArea.addEventListener('dragleave', () => {
+    uploadArea.classList.remove('border-primary', 'bg-primary/5');
+  });
+  uploadArea.addEventListener('drop', (e) => {
+    e.preventDefault();
+    uploadArea.classList.remove('border-primary', 'bg-primary/5');
+    const file = e.dataTransfer.files[0];
+    if (file && (file.name.endsWith('.pdf') || file.name.endsWith('.doc') || file.name.endsWith('.docx'))) {
+      showFileBadge(file.name);
+    } else if (file) {
+      showToast('Please upload a PDF, DOC, or DOCX file.', 'error');
+    }
+  });
+
+  // ===== ANALYZE =====
+  function analyzeResume() {
+    showAnalyzingModal();
+  }
+  function showAnalyzingModal() {
+    const modal = document.getElementById('analyzing-modal');
+    const bar = document.getElementById('analyze-progress-bar');
+    const status = document.getElementById('analyze-status-text');
+    modal.classList.remove('hidden');
+    const steps = [
+      { pct: 20, text: 'Parsing resume structure...' },
+      { pct: 45, text: 'Scanning for keywords...' },
+      { pct: 65, text: 'Checking formatting rules...' },
+      { pct: 85, text: 'Running ATS compatibility check...' },
+      { pct: 100, text: 'Generating your report...' },
+    ];
+    let i = 0;
+    const run = () => {
+      if (i < steps.length) {
+        bar.style.width = steps[i].pct + '%';
+        status.textContent = steps[i].text;
+        i++;
+        setTimeout(run, 600);
+      } else {
+        setTimeout(() => {
+          modal.classList.add('hidden');
+          window.location.href = 'dashboard.html';
+        }, 400);
+      }
+    };
+    bar.style.width = '0%';
+    setTimeout(run, 200);
+  }
+
+  function showSampleReport() {
+    window.location.href = 'dashboard.html';
+  }
+
+  function goToDashboard() {
+    window.location.href = 'dashboard.html';
+  }
+
+  // ===== LOGIN MODAL =====
+  function openLoginModal() {
+    document.getElementById('login-modal').classList.remove('hidden');
+    document.getElementById('login-email').focus();
+  }
+  function closeLoginModal() {
+    document.getElementById('login-modal').classList.add('hidden');
+  }
+  function handleLogin(e) {
+    e.preventDefault();
+    closeLoginModal();
+    showToast('Logged in successfully!', 'success');
+    setTimeout(() => goToDashboard(), 800);
+  }
+
+  // ===== TOAST =====
+  function showToast(message, type = 'info') {
+    const existing = document.getElementById('toast-msg');
+    if (existing) existing.remove();
+    const colors = { success: 'bg-secondary text-white', error: 'bg-error text-white', info: 'bg-on-surface text-white' };
+    const toast = document.createElement('div');
+    toast.id = 'toast-msg';
+    toast.className = `fixed bottom-6 right-6 z-[200] px-5 py-3 rounded-xl shadow-xl text-sm font-semibold ${colors[type]} flex items-center gap-2 transition-all`;
+    toast.style.transform = 'translateY(20px)';
+    toast.style.opacity = '0';
+    toast.innerHTML = `<span class="material-symbols-outlined text-base">${type === 'success' ? 'check_circle' : type === 'error' ? 'error' : 'info'}</span>${message}`;
+    document.body.appendChild(toast);
+    requestAnimationFrame(() => {
+      toast.style.transform = 'translateY(0)';
+      toast.style.opacity = '1';
+    });
+    setTimeout(() => { toast.style.opacity = '0'; setTimeout(() => toast.remove(), 300); }, 3000);
+  }
+
+  // ===== SCROLL EFFECTS =====
+  const observerOpts = { threshold: 0.15 };
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(e => { if(e.isIntersecting) e.target.classList.add('opacity-100'); });
+  }, observerOpts);
+  document.querySelectorAll('.fade-in-up').forEach(el => {
+    el.style.opacity = '0';
+    observer.observe(el);
+  });
+
+  // Close mobile menu on outside click
+  document.addEventListener('click', (e) => {
+    const menu = document.getElementById('mobile-menu');
+    const btn = document.getElementById('mobile-menu-btn');
+    if (menu.classList.contains('open') && !menu.contains(e.target) && !btn.contains(e.target)) {
+      closeMobileMenu();
+    }
+  });
+
+  // Close login modal on Escape
+  document.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape') {
+      closeLoginModal();
+      document.getElementById('analyzing-modal').classList.add('hidden');
+    }
+  });
+
+  // ===== BOTTOM BANNER AD =====
+  function dismissBottomBanner() {
+    const b = document.getElementById('bottom-banner-ad');
+    b.style.transform = 'translateY(100%)';
+    setTimeout(() => b.style.display = 'none', 300);
+  }
+
+  // ===== FULL-SCREEN INTERSTITIAL AD =====
+  (function() {
+    const shown = sessionStorage.getItem('interstitial_shown');
+    if (!shown) {
+      setTimeout(() => {
+        document.getElementById('interstitial-ad').style.display = 'flex';
+        document.body.style.overflow = 'hidden';
+        let sec = 3;
+        const cd = document.getElementById('interstitial-countdown');
+        const iv = setInterval(() => {
+          sec--;
+          cd.textContent = sec;
+          if (sec <= 0) {
+            clearInterval(iv);
+            document.getElementById('interstitial-close-btn').style.display = 'flex';
+            document.getElementById('interstitial-timer').innerHTML = '<span class="text-primary font-semibold cursor-pointer" onclick="closeInterstitial()">Close ✕</span>';
+          }
+        }, 1000);
+        sessionStorage.setItem('interstitial_shown', '1');
+      }, 800);
+    }
+  })();
+  function closeInterstitial() {
+    document.getElementById('interstitial-ad').style.display = 'none';
+    document.body.style.overflow = '';
+  }
+</script>
+</body>
+</html>
