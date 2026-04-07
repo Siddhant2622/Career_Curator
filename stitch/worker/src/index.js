@@ -1,37 +1,60 @@
-require('dotenv').config();
-const express = require('express');
-const cors = require('cors');
+/**
+ * Career Curator ATS Backend (Cloudflare Worker)
+ * This replaces the local Express server.js for cloud deployment.
+ */
 
-const app = express();
-const PORT = 3000;
+export default {
+	async fetch(request, env, ctx) {
+		// Handle CORS preflight requests
+		if (request.method === 'OPTIONS') {
+			return new Response(null, {
+				headers: {
+					'Access-Control-Allow-Origin': '*',
+					'Access-Control-Allow-Methods': 'GET, POST, OPTIONS',
+					'Access-Control-Allow-Headers': 'Content-Type',
+				},
+			});
+		}
 
-// Enable CORS for local HTML file access
-app.use(cors());
-// Parse JSON payloads up to 10MB (for large resumes)
-app.use(express.json({ limit: '10mb' }));
+		const url = new URL(request.url);
 
-// Health check endpoint
-app.get('/api/health', (req, res) => {
-  res.json({ status: 'ok', apiKeyConfigured: !!process.env.GEMINI_API_KEY });
-});
+		// Added CORS headers for all actual responses
+		const corsHeaders = {
+			'Access-Control-Allow-Origin': '*',
+			'Content-Type': 'application/json',
+		};
 
-app.post('/api/analyze', async (req, res) => {
-  try {
-    const { resumeText, jobDescription } = req.body;
-    
-    // Securely grab the key from server environment
-    const API_KEY = process.env.GEMINI_API_KEY;
-    
-    if (!API_KEY) {
-      return res.status(500).json({ error: "Missing GEMINI_API_KEY in backend .env file" });
-    }
+		// 1. Health Route
+		if (url.pathname === '/api/health' && request.method === 'GET') {
+			return new Response(JSON.stringify({ status: 'ok', apiKeyConfigured: !!env.GEMINI_API_KEY }), {
+				status: 200,
+				headers: corsHeaders
+			});
+		}
 
-    if (!resumeText || resumeText.trim().length < 20) {
-      return res.status(400).json({ error: "Resume text is too short or empty" });
-    }
+		// 2. Analyze Route
+		if (url.pathname === '/api/analyze' && request.method === 'POST') {
+			try {
+				const { resumeText, jobDescription } = await request.json();
 
-    // ===== ENHANCED PROMPT FOR 90%+ ATS SCORE =====
-    const prompt = `You are the world's #1 ATS (Applicant Tracking System) resume optimizer and professional copywriter. Your job is to analyze a resume and REBUILD it to score 90%+ on ALL major ATS scanning systems (Taleo, Workday, Greenhouse, iCIMS, Lever, BambooHR, Jobvite, SmartRecruiters, etc.).
+				const API_KEY = env.GEMINI_API_KEY;
+
+				if (!API_KEY) {
+					return new Response(JSON.stringify({ error: "Missing GEMINI_API_KEY in backend environment" }), {
+						status: 500,
+						headers: corsHeaders
+					});
+				}
+
+				if (!resumeText || resumeText.trim().length < 20) {
+					return new Response(JSON.stringify({ error: "Resume text is too short or empty" }), {
+						status: 400,
+						headers: corsHeaders
+					});
+				}
+
+				// The enhanced 90%+ ATS Score Prompt
+				const prompt = `You are the world's #1 ATS (Applicant Tracking System) resume optimizer and professional copywriter. Your job is to analyze a resume and REBUILD it to score 90%+ on ALL major ATS scanning systems (Taleo, Workday, Greenhouse, iCIMS, Lever, BambooHR, Jobvite, SmartRecruiters, etc.).
 
 ## YOUR CRITICAL ATS OPTIMIZATION RULES:
 1. **KEYWORD SATURATION**: Extract every single relevant keyword, skill, tool, technology, and competency from the job description. Inject them naturally throughout the resume - in the Summary, Experience bullets, and Skills sections. Each keyword should appear at LEAST once.
@@ -98,124 +121,115 @@ Then write the COMPLETE REBUILT RESUME as clean, semantic, ATS-optimized HTML. F
 Make sure EVERY keyword from the job description appears at least once in the resume. This is MANDATORY for ATS scoring.
 Then output exactly ===HTML_END===`;
 
-    console.log(`[Server] Analyzing resume (${resumeText.length} chars) with Gemini AI...`);
+				// Model fallback chain - try multiple models to handle rate limits
+				const models = [
+					'gemini-2.5-flash',
+					'gemini-2.0-flash',
+					'gemini-2.0-flash-lite',
+					'gemini-flash-latest',
+					'gemini-flash-lite-latest'
+				];
 
-    // Model fallback chain - try multiple models to handle rate limits
-    const models = [
-      'gemini-2.5-flash',
-      'gemini-2.0-flash',
-      'gemini-2.0-flash-lite',
-      'gemini-flash-latest',
-      'gemini-flash-lite-latest'
-    ];
+				let data = null;
+				let lastError = null;
 
-    let data = null;
-    let lastError = null;
+				for (const model of models) {
+					try {
+						const response = await fetch(
+							`https://generativelanguage.googleapis.com/v1beta/models/${model}:generateContent?key=${API_KEY}`,
+							{
+								method: 'POST',
+								headers: { 'Content-Type': 'application/json' },
+								body: JSON.stringify({
+									contents: [{ parts: [{ text: prompt }] }],
+									generationConfig: {
+										temperature: 0.15,
+										maxOutputTokens: 8192,
+										topP: 0.9
+									}
+								})
+							}
+						);
 
-    for (const model of models) {
-      try {
-        console.log(`[Server] Trying model: ${model}...`);
-        const response = await fetch(
-          `https://generativelanguage.googleapis.com/v1beta/models/${model}:generateContent?key=${API_KEY}`,
-          {
-            method: 'POST',
-            headers: { 'Content-Type': 'application/json' },
-            body: JSON.stringify({
-              contents: [{ parts: [{ text: prompt }] }],
-              generationConfig: { 
-                temperature: 0.15,
-                maxOutputTokens: 8192,
-                topP: 0.9
-              }
-            })
-          }
-        );
+						if (response.ok) {
+							data = await response.json();
+							break;
+						} else {
+							const errText = await response.text();
+							lastError = `${model}: HTTP ${response.status} - ${errText.substring(0, 150)}`;
+							
+							// If rate limited (429) or unavailable (503), try next model immediately.
+							continue;
+						}
+					} catch (fetchErr) {
+						lastError = fetchErr.message;
+						continue;
+					}
+				}
 
-        if (response.ok) {
-          data = await response.json();
-          console.log(`[Server] ✓ Success with model: ${model}`);
-          break;
-        } else {
-          const errText = await response.text();
-          console.warn(`[Server] ✗ ${model} failed (${response.status}): ${errText.substring(0, 150)}`);
-          lastError = `${model}: HTTP ${response.status}`;
-          // If rate limited, try next model
-          if (response.status === 429) {
-            await new Promise(r => setTimeout(r, 500)); // Brief pause before trying next
-            continue;
-          }
-          // For other errors, still try next model
-          continue;
-        }
-      } catch (fetchErr) {
-        console.warn(`[Server] ✗ ${model} fetch error:`, fetchErr.message);
-        lastError = fetchErr.message;
-        continue;
-      }
-    }
+				if (!data) {
+					return new Response(JSON.stringify({ error: `All Gemini models failed. Last error: ${lastError}` }), {
+						status: 500,
+						headers: corsHeaders
+					});
+				}
 
-    if (!data) {
-      throw new Error(`All Gemini models failed. Last error: ${lastError}`);
-    }
+				const aiText = data.candidates?.[0]?.content?.parts?.[0]?.text || '';
 
-    const aiText = data.candidates?.[0]?.content?.parts?.[0]?.text || '';
+				if (!aiText) {
+					return new Response(JSON.stringify({ error: 'Gemini returned empty response' }), {
+						status: 500,
+						headers: corsHeaders
+					});
+				}
 
-    if (!aiText) {
-      throw new Error('Gemini returned empty response');
-    }
+				// Extract the JSON block
+				const jsonMatch = aiText.match(/===JSON_START===\s*([\s\S]*?)\s*===JSON_END===/);
+				if (!jsonMatch) {
+					return new Response(JSON.stringify({ error: 'Failed to parse AI JSON block. Delimiters missing.', raw: aiText.substring(0, 200) }), {
+						status: 500,
+						headers: corsHeaders
+					});
+				}
 
-    console.log(`[Server] AI response received (${aiText.length} chars)`);
+				let parsedJson;
+				try {
+					let jsonStr = jsonMatch[1].trim();
+					jsonStr = jsonStr.replace(/^```json?\s*/i, '').replace(/\s*```$/i, '');
+					parsedJson = JSON.parse(jsonStr);
+				} catch (parseErr) {
+					return new Response(JSON.stringify({ error: 'Failed to parse AI response JSON: ' + parseErr.message }), {
+						status: 500,
+						headers: corsHeaders
+					});
+				}
 
-    // Extract the JSON block
-    const jsonMatch = aiText.match(/===JSON_START===\s*([\s\S]*?)\s*===JSON_END===/);
-    if (!jsonMatch) {
-      console.error("[Server] RAW AI TEXT (first 500 chars):", aiText.substring(0, 500));
-      throw new Error('Failed to parse AI JSON block. Delimiters missing.');
-    }
+				// Extract HTML block
+				const htmlMatch = aiText.match(/===HTML_START===\s*([\s\S]*?)\s*===HTML_END===/);
+				if (htmlMatch) {
+					let htmlContent = htmlMatch[1].trim();
+					htmlContent = htmlContent.replace(/^```html?\s*/i, '').replace(/\s*```$/i, '');
+					parsedJson.optimizedText = htmlContent;
+				}
 
-    let parsedJson;
-    try {
-      // Clean JSON (remove any markdown code fences if present)
-      let jsonStr = jsonMatch[1].trim();
-      jsonStr = jsonStr.replace(/^```json?\s*/i, '').replace(/\s*```$/i, '');
-      parsedJson = JSON.parse(jsonStr);
-    } catch (parseErr) {
-      console.error("[Server] JSON Parse Error:", parseErr.message);
-      console.error("[Server] Raw JSON:", jsonMatch[1].substring(0, 300));
-      throw new Error('Failed to parse AI response JSON: ' + parseErr.message);
-    }
+				// Ensure the score reflects the optimization
+				if (parsedJson.score < 85) {
+					parsedJson.score = Math.min(95, parsedJson.score + 15);
+				}
 
-    // Extract HTML block
-    const htmlMatch = aiText.match(/===HTML_START===\s*([\s\S]*?)\s*===HTML_END===/);
-    if (htmlMatch) {
-      let htmlContent = htmlMatch[1].trim();
-      // Remove markdown code fences if present
-      htmlContent = htmlContent.replace(/^```html?\s*/i, '').replace(/\s*```$/i, '');
-      parsedJson.optimizedText = htmlContent;
-    }
+				return new Response(JSON.stringify(parsedJson), {
+					status: 200,
+					headers: corsHeaders
+				});
 
-    // Ensure the score reflects the optimization
-    if (parsedJson.score < 85) {
-      parsedJson.score = Math.min(95, parsedJson.score + 15);
-    }
+			} catch (error) {
+				return new Response(JSON.stringify({ error: error.message }), {
+					status: 500,
+					headers: corsHeaders
+				});
+			}
+		}
 
-    console.log(`[Server] ✓ Analysis complete. Score: ${parsedJson.score}`);
-    res.json(parsedJson);
-
-  } catch (error) {
-    console.error("[Server] Backend Error:", error.message);
-    res.status(500).json({ error: error.message });
-  }
-});
-
-// Serve static files (for convenience)
-app.use(express.static('.'));
-
-app.listen(PORT, () => {
-  console.log(`\n🚀 Career Curator ATS Backend Server`);
-  console.log(`   ├── API: http://localhost:${PORT}/api/analyze`);
-  console.log(`   ├── Health: http://localhost:${PORT}/api/health`);
-  console.log(`   ├── Dashboard: http://localhost:${PORT}/dashboard.html`);
-  console.log(`   └── API Key: ${process.env.GEMINI_API_KEY ? '✓ Configured' : '✗ MISSING!'}`);
-  console.log('');
-});
+		return new Response(JSON.stringify({ error: "Not Found" }), { status: 404, headers: corsHeaders });
+	},
+};

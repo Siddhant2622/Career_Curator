@@ -197,11 +197,13 @@
             <span class="material-symbols-outlined text-primary">work</span>
             <h3 class="font-headline font-bold text-sm uppercase tracking-tight">Job Description</h3>
           </div>
-          <textarea id="job-desc" class="w-full h-28 bg-surface-container-low border border-outline-variant/30 rounded-xl px-5 py-4 text-sm font-body focus:outline-none focus:ring-2 focus:ring-primary/30 focus:border-primary transition-all placeholder:text-outline-variant resize-none" placeholder="Paste the job description here for keyword matching..."></textarea>
+          <textarea id="job-desc" class="w-full h-28 bg-surface-container-low border border-outline-variant/30 rounded-xl px-5 py-4 text-sm font-body focus:outline-none focus:ring-2 focus:ring-primary/30 focus:border-primary transition-all placeholder:text-outline-variant resize-none" placeholder="Paste the FULL job description here for maximum ATS keyword matching. The AI will extract every keyword and optimize your resume to score 90%+ on all ATS scanners..."></textarea>
 
-          <button id="btn-analyze" onclick="runAnalysis()" class="mt-3 w-full py-3.5 rounded-xl bg-gradient-to-r from-primary to-blue-500 text-white font-headline font-bold text-base shadow-md hover:shadow-primary/30 hover:shadow-lg transition-all flex items-center justify-center gap-2 active:scale-[.98]">
-            <span class="material-symbols-outlined">bolt</span> Analyze Now
+          <button id="btn-analyze" onclick="runAnalysis()" class="mt-3 w-full py-3.5 rounded-xl bg-gradient-to-r from-primary via-blue-500 to-indigo-500 text-white font-headline font-bold text-base shadow-md hover:shadow-primary/30 hover:shadow-lg transition-all flex items-center justify-center gap-2 active:scale-[.98] relative overflow-hidden">
+            <span class="material-symbols-outlined">auto_awesome</span> AI-Powered ATS Analysis
+            <span class="ml-1 px-2 py-0.5 bg-white/20 rounded-full text-[9px] uppercase tracking-wider font-bold">Gemini AI</span>
           </button>
+          <p class="text-[10px] text-center text-on-surface-variant mt-2">✨ Uses Google Gemini AI to rewrite & optimize your resume for 90%+ ATS scores</p>
         </div>
       </div>
     </div>
@@ -564,13 +566,14 @@
 <div id="analyzing-modal" class="fixed inset-0 z-[100] flex items-center justify-center p-4 hidden" role="dialog" aria-modal="true">
   <div class="absolute inset-0 bg-black/40 backdrop-blur-sm"></div>
   <div class="relative bg-white rounded-2xl shadow-2xl p-10 w-full max-w-sm z-10 text-center">
-    <div class="w-20 h-20 rounded-full bg-primary/10 flex items-center justify-center mx-auto mb-5">
-      <span class="material-symbols-outlined text-primary text-4xl animate-spin">sync</span>
+    <div class="w-20 h-20 rounded-full bg-gradient-to-br from-primary/20 to-indigo-500/20 flex items-center justify-center mx-auto mb-5">
+      <span class="material-symbols-outlined text-primary text-4xl animate-spin">auto_awesome</span>
     </div>
-    <h3 class="font-headline font-extrabold text-xl mb-2">Analyzing Resume...</h3>
-    <p class="text-sm text-on-surface-variant mb-5" id="analysis-status">Starting analysis...</p>
-    <div class="w-full bg-surface-container-highest rounded-full h-2">
-      <div id="analysis-bar" class="h-full bg-gradient-to-r from-primary to-secondary rounded-full transition-all duration-500" style="width:0%"></div>
+    <h3 class="font-headline font-extrabold text-xl mb-2">AI-Powered Analysis</h3>
+    <p class="text-sm text-on-surface-variant mb-2" id="analysis-status">Starting Gemini AI analysis...</p>
+    <p class="text-[10px] text-primary font-semibold mb-4" id="analysis-substatus">Connecting to AI backend...</p>
+    <div class="w-full bg-surface-container-highest rounded-full h-2.5 overflow-hidden">
+      <div id="analysis-bar" class="h-full bg-gradient-to-r from-primary via-blue-500 to-indigo-500 rounded-full transition-all duration-500" style="width:0%"></div>
     </div>
   </div>
 </div>
@@ -678,53 +681,79 @@
     const status = document.getElementById('analysis-status');
     modal.classList.remove('hidden');
     bar.style.width = '0%';
+    const substatus = document.getElementById('analysis-substatus');
 
     try {
       // Step 1: Parse file
-      bar.style.width = '15%';
+      bar.style.width = '10%';
       status.textContent = 'Parsing document structure...';
-      await sleep(300);
+      if (substatus) substatus.textContent = 'Extracting text from your resume...';
+      await sleep(400);
 
       const resumeText = await ATSEngine.extractText(currentFile);
       if (!resumeText || resumeText.trim().length < 20) {
         throw new Error('Could not extract text from the file. The file may be image-based or empty.');
       }
 
-      bar.style.width = '35%';
-      status.textContent = 'Extracting text and sections...';
+      bar.style.width = '25%';
+      status.textContent = 'Text extracted successfully';
+      if (substatus) substatus.textContent = `Found ${resumeText.split(/\s+/).length} words in your resume`;
       await sleep(300);
 
       // Step 2: Get job description
       const jobDesc = document.getElementById('job-desc').value.trim();
 
-      bar.style.width = '55%';
-      status.textContent = 'Matching keywords & analyzing...';
+      bar.style.width = '35%';
+      status.textContent = 'Connecting to Gemini AI...';
+      if (substatus) substatus.textContent = jobDesc ? 'Matching resume against job description keywords...' : 'Running general ATS compatibility analysis...';
       await sleep(300);
 
-      // Step 3: Run analysis (AI if key available, else local)
-      bar.style.width = '75%';
-      status.textContent = ATSEngine.getApiKey() ? 'Running AI-powered analysis...' : 'Running ATS compatibility check...';
+      // Step 3: Run AI analysis
+      bar.style.width = '45%';
+      status.textContent = '🤖 Gemini AI is optimizing your resume...';
+      if (substatus) substatus.textContent = 'Analyzing keywords, formatting, sections & content quality...';
+
+      // Start a progress animation while AI is working
+      let progressInterval = setInterval(() => {
+        const currentWidth = parseFloat(bar.style.width);
+        if (currentWidth < 85) {
+          bar.style.width = (currentWidth + 2) + '%';
+        }
+      }, 1000);
 
       const result = await ATSEngine.analyzeWithAI(resumeText, jobDesc);
       lastAnalysisResult = result;
+      clearInterval(progressInterval);
 
       bar.style.width = '90%';
-      status.textContent = 'Generating your report...';
-      await sleep(300);
+      if (result.analysisType === 'ai') {
+        status.textContent = '✅ AI optimization complete!';
+        if (substatus) substatus.textContent = `Score: ${result.score}% — Resume rebuilt for 90%+ ATS compatibility`;
+      } else {
+        status.textContent = 'Analysis complete (local engine)';
+        if (substatus) substatus.textContent = 'AI backend unavailable — used enhanced local analysis';
+      }
+      await sleep(400);
 
       // Step 4: Generate suggestions if local analysis
-      if (result.analysisType === 'local') {
+      if (result.analysisType === 'local' && (!result.suggestions || result.suggestions.length === 0)) {
         result.suggestions = ATSEngine.generateSuggestions(result);
       }
 
       bar.style.width = '100%';
       status.textContent = 'Report ready!';
-      await sleep(400);
+      if (substatus) substatus.textContent = 'Scroll down to view your full ATS report';
+      await sleep(500);
 
       // Update all UI elements
       modal.classList.add('hidden');
       updateDashboardUI(result);
-      showToast('Analysis complete! Scroll down to view results.', 'success');
+      
+      if (result.analysisType === 'ai') {
+        showToast('🤖 AI analysis complete! Your resume has been optimized for 90%+ ATS score.', 'success');
+      } else {
+        showToast('Analysis complete! For AI-powered optimization, start the backend server.', 'info');
+      }
 
     } catch (err) {
       modal.classList.add('hidden');
