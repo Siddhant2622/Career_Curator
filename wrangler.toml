@@ -1,8 +1,0 @@
-name = "career-curator-backend"
-main = "stitch/worker/src/index.js"
-compatibility_date = "2024-04-01"
-
-[observability]
-enabled = true
-
-# The API key will be set securely via `npx wrangler secret put GEMINI_API_KEY`
