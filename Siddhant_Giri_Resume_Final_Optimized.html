@@ -1,0 +1,280 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Siddhant Giri - Resume</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body {
+            font-family: 'Calibri', 'Arial', sans-serif;
+            background-color: #ffffff;
+            color: #333;
+            line-height: 1.4;
+            font-size: 11px;
+        }
+        .container {
+            max-width: 8.5in;
+            height: 11in;
+            margin: 0 auto;
+            padding: 0.5in;
+            background: white;
+            box-shadow: 0 0 10px rgba(0,0,0,0.1);
+        }
+        .header {
+            text-align: center;
+            margin-bottom: 12px;
+            border-bottom: 2px solid #000;
+            padding-bottom: 8px;
+        }
+        .name {
+            font-size: 16px;
+            font-weight: bold;
+            margin-bottom: 2px;
+            letter-spacing: 0.5px;
+        }
+        .title {
+            font-size: 11px;
+            margin-bottom: 4px;
+            color: #000;
+        }
+        .contact-info {
+            font-size: 10px;
+            line-height: 1.3;
+        }
+        .contact-info a {
+            color: #0066cc;
+            text-decoration: none;
+        }
+        .section {
+            margin-top: 10px;
+            margin-bottom: 8px;
+        }
+        .section-title {
+            font-size: 12px;
+            font-weight: bold;
+            background-color: #e8e8e8;
+            padding: 4px 6px;
+            border-left: 3px solid #000;
+            margin-bottom: 6px;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+        .entry {
+            margin-bottom: 8px;
+        }
+        .entry-header {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 2px;
+        }
+        .entry-title {
+            font-weight: bold;
+            font-size: 11px;
+        }
+        .entry-date {
+            font-size: 10px;
+            color: #555;
+            font-style: italic;
+        }
+        .entry-subtitle {
+            font-size: 10px;
+            color: #666;
+            font-style: italic;
+            margin-bottom: 3px;
+        }
+        .bullet-list {
+            margin-left: 18px;
+            margin-top: 3px;
+            list-style-type: disc;
+        }
+        .bullet-list li {
+            margin-bottom: 3px;
+            font-size: 10px;
+            line-height: 1.3;
+        }
+        .skill-category {
+            margin-bottom: 4px;
+            font-size: 10px;
+            line-height: 1.4;
+        }
+        .skill-category strong {
+            display: inline;
+            font-weight: bold;
+        }
+        .two-column {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 15px;
+        }
+        @media print {
+            body {
+                background: white;
+            }
+            .container {
+                box-shadow: none;
+                margin: 0;
+                padding: 0.5in;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <!-- HEADER -->
+        <div class="header">
+            <div class="name">SIDDHANT GIRI</div>
+            <div class="title">B.Tech. Electronics & Communication Engineering</div>
+            <div class="contact-info">
+                <div>Bhopal, Jharkhand | Phone: [Your Phone Number]</div>
+                <div>Email: [Your Email] | LinkedIn: <a href="https://linkedin.com/in/siddhant-giri">linkedin.com/in/siddhant-giri</a> | GitHub: <a href="https://github.com/Siddhant2622">github.com/Siddhant2622</a></div>
+                <div>LeetCode: [Your Profile] | CodeChef: [Your Profile]</div>
+            </div>
+        </div>
+
+        <!-- PROFESSIONAL SUMMARY -->
+        <div class="section">
+            <div class="section-title">Professional Summary</div>
+            <p style="font-size: 10px; line-height: 1.4; margin: 0;">
+                Motivated and hardworking Electronics & Communication Engineering undergraduate with strong interest in software development, IoT solutions, and problem-solving. Hands-on experience in Arduino-based embedded systems, full-stack web development, and AI tool integration. Actively building technical skills through real-world projects and professional certifications. Proven ability to deliver hardware-software integrated solutions with 700+ competitive coding problems solved.
+            </p>
+        </div>
+
+        <!-- TECHNICAL SKILLS -->
+        <div class="section">
+            <div class="section-title">Technical Skills</div>
+            <div class="skill-category">
+                <strong>Programming Languages:</strong> C++, Python, JavaScript
+            </div>
+            <div class="skill-category">
+                <strong>Embedded Systems:</strong> Arduino UNO, Microcontrollers, Sensors, Motor Control, Wireless Communication
+            </div>
+            <div class="skill-category">
+                <strong>Web Technologies:</strong> HTML5, CSS3, JavaScript, Responsive Design, UI/UX Design
+            </div>
+            <div class="skill-category">
+                <strong>Core Concepts:</strong> Data Structures & Algorithms, IoT Development, System Design
+            </div>
+            <div class="skill-category">
+                <strong>Tools & Platforms:</strong> Google Cloud Platform, GitHub, Arduino IDE, Google APIs, Canva
+            </div>
+            <div class="skill-category">
+                <strong>Emerging Technologies:</strong> Generative AI, Google APIs, AI Integration
+            </div>
+        </div>
+
+        <!-- EDUCATION -->
+        <div class="section">
+            <div class="section-title">Education</div>
+            <div class="entry">
+                <div class="entry-header">
+                    <div class="entry-title">Bachelor of Technology (B.Tech) in Electronics & Communication Engineering</div>
+                    <div class="entry-date">09/2024 - 07/2028</div>
+                </div>
+                <div class="entry-subtitle">Lakshmi Narain College of Technology, Bhopal</div>
+            </div>
+            <div class="entry">
+                <div class="entry-header">
+                    <div class="entry-title">Higher Secondary School (Class XII)</div>
+                    <div class="entry-date">04/2012 - 04/2024</div>
+                </div>
+                <div class="entry-subtitle">O.P. Jindal School, Patratu, Jharkhand</div>
+            </div>
+        </div>
+
+        <!-- EXPERIENCE -->
+        <div class="section">
+            <div class="section-title">Professional Experience</div>
+            <div class="entry">
+                <div class="entry-title">Full Stack Web Developer | Rotibank NGO</div>
+                <ul class="bullet-list">
+                    <li>Designed and developed responsive website for food distribution NGO, improving online visibility and organizational accessibility</li>
+                    <li>Implemented content structuring and modern UI design for enhanced usability</li>
+                    <li>Focused on clear information delivery and user-friendly interface</li>
+                </ul>
+            </div>
+            <div class="entry">
+                <div class="entry-title">Google Developer Group (GDG) Member | College Chapter</div>
+                <ul class="bullet-list">
+                    <li>Active participant in collaborative development community</li>
+                    <li>Engaged in technical workshops and knowledge sharing initiatives</li>
+                    <li>Contributed to campus technology innovation efforts</li>
+                </ul>
+            </div>
+        </div>
+
+        <!-- TECHNICAL PROJECTS -->
+        <div class="section">
+            <div class="section-title">Technical Projects</div>
+            <div class="entry">
+                <div class="entry-title">App-Controlled Robotic Car (Arduino UNO)</div>
+                <ul class="bullet-list">
+                    <li>Built Arduino-based robotic car with mobile application control interface</li>
+                    <li>Implemented motor driver control and wireless communication protocols</li>
+                    <li>Integrated sensor-based obstacle detection and navigation</li>
+                </ul>
+            </div>
+            <div class="entry">
+                <div class="entry-title">Smart Parking Management System (Arduino)</div>
+                <ul class="bullet-list">
+                    <li>Developed Arduino-based smart parking system using ultrasonic and IR sensors</li>
+                    <li>Automated parking slot detection and real-time status updates</li>
+                    <li>Improved efficiency and reduced manual monitoring requirements</li>
+                </ul>
+            </div>
+            <div class="entry">
+                <div class="entry-title">Conversational AI Chatbot Application</div>
+                <ul class="bullet-list">
+                    <li>Developed chatbot using Google APIs and natural language processing</li>
+                    <li>Implemented context-aware conversational logic for enhanced user interaction</li>
+                </ul>
+            </div>
+            <div class="entry">
+                <div class="entry-title">Result Management System (School Software)</div>
+                <ul class="bullet-list">
+                    <li>Built result management software for small schools and educational institutions</li>
+                    <li>Enabled subject teachers to add marks and class teachers to generate print-ready reports</li>
+                    <li>Implemented database design for secure student record management</li>
+                </ul>
+            </div>
+            <div class="entry">
+                <div class="entry-title">NGO Website Development | Rotibank</div>
+                <ul class="bullet-list">
+                    <li>Created responsive website showcasing NGO activities and impact</li>
+                    <li>Optimized user experience and information accessibility</li>
+                </ul>
+            </div>
+        </div>
+
+        <!-- CERTIFICATIONS -->
+        <div class="section">
+            <div class="section-title">Certifications & Courses</div>
+            <ul class="bullet-list">
+                <li><strong>Data Structures & Algorithms</strong> - Comprehensive DSA and competitive programming course</li>
+                <li><strong>AI Productivity Hacks to Reimagine Your Workday and Career</strong> - Professional development certification</li>
+                <li><strong>Build Your Generative AI Productive Skills</strong> - Microsoft & LinkedIn collaborative certification</li>
+                <li><strong>Cloud Functions: 3 Ways</strong> - Google Cloud Skill Badge</li>
+                <li><strong>Networking Fundamentals</strong> - Google Cloud Skill Badge</li>
+                <li><strong>Canva Graphics Designing</strong> - Design and visual content creation certification</li>
+            </ul>
+        </div>
+
+        <!-- ACHIEVEMENTS -->
+        <div class="section">
+            <div class="section-title">Achievements & Accomplishments</div>
+            <ul class="bullet-list">
+                <li>Solved 700+ competitive programming challenges in C++ on CodeChef platform</li>
+                <li>Achieved Ninja Dominator League ranking on Coding Ninja platform</li>
+                <li>Successfully completed multiple technical and AI-focused certification programs</li>
+                <li>Delivered 5+ real-world projects combining hardware and software components</li>
+                <li>Active GitHub contributor with multiple IoT and web development projects</li>
+            </ul>
+        </div>
+
+    </div>
+</body>
+</html>
